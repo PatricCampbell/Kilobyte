@@ -1,0 +1,35 @@
+.tile {
+  height: 50px;
+  width: 50px;
+  background: whitesmoke;
+  border: 1px solid black;
+}
+
+.row {
+  width: 200px;
+  display: flex;
+}
+
+[data-value='1'] {
+  background-color: #EEE4DA;
+}
+
+[data-value='2'] {
+  background-color: #F5DEBC;
+}
+
+[data-value='4'] {
+  background-color: #EE8B22;
+}
+
+[data-value='8'] {
+  background-color: #EE8B22;
+}
+
+[data-value='16'] {
+  background-color: #F26A21;
+}
+
+[data-value='64'] {
+  background-color: #F65E3B;
+}
