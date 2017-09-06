@@ -23,6 +23,12 @@ There will be two script files used in this project in vanilla JavaScript to con
 * board.js will handle the logic of the tiled board, keep track of thee position of the tiles, determine if the game is won or lost, and will tell the browser how to render the board.
 * tile.js will handle the logic of each tile and will have a factory method to create new tiles.
 
+## Wireframes
+
+Kilobyte is a one page app that contains the current score and session high score at the top. The board will be in the center with arrow buttons on each side of the board. Below the board will be the instructions on how to play. At the bottom will be links to my portfolio, Github, and LinkedIn.
+
+[Wireframe]: 
+
 ## Implementation Timeline
 
 Day 1: Initial setup ensuring that Animate.css works correctly. Start creating the two script files mentioned above with game logic.
