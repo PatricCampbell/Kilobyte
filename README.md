@@ -27,7 +27,7 @@ There will be two script files used in this project in vanilla JavaScript to con
 
 Kilobyte is a one page app that contains the current score and session high score at the top. The board will be in the center with arrow buttons on each side of the board. Below the board will be the instructions on how to play. At the bottom will be links to my portfolio, Github, and LinkedIn.
 
-[Wireframe]: https://github.com/PatricCampbell/Kilobyte/blob/master/kilobyte.png
+![Wireframe]:(https://github.com/PatricCampbell/Kilobyte/blob/master/kilobyte.png)
 
 ## Implementation Timeline
 
