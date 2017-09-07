@@ -3,6 +3,19 @@ body {
   background: black;
 }
 
+header {
+  margin: 0 auto;
+  width: 31.25rem;
+  color: white;
+  text-align: center;
+  font-size: 1.75rem;
+}
+
+footer {
+  margin: 0 auto;
+  width: 31.25rem;
+}
+
 .game-board {
   width: 31.25rem;
   margin: 0 auto;

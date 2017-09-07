@@ -143,9 +143,9 @@ class Board {
     }
   }
 
-  moveTile(xPos, yPos, xVector, yVector) {
-    let newX = xPos + xVector;
-    let newY = yPos + yVector;
+  moveTile(xPos, yPos, deltaX, deltaY) {
+    let newX = xPos + deltaX;
+    let newY = yPos + deltaY;
     let value = this.grid[xPos][yPos].value;
 
     if (newX > 3 || newY > 3 || newX < 0 ||newY < 0) {
@@ -162,7 +162,7 @@ class Board {
     } else {
       this.clearSpace(xPos, yPos);
       this.addTile(newX, newY, value);
-      this.moveTile(newX, newY, xVector, yVector);
+      this.moveTile(newX, newY, deltaX, deltaY);
     }
   }
 
