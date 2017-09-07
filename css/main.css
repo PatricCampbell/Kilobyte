@@ -11,9 +11,45 @@ header {
   font-size: 1.75rem;
 }
 
-footer {
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+a:hover * {
+  color: #F5DEBC;
+}
+
+.links {
   margin: 0 auto;
   width: 31.25rem;
+  display: flex;
+}
+
+.links a {
+  width: 33%;
+}
+
+.links a span {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.links a span i {
+  margin-right: .6rem;
+}
+
+.links a span p, .links a span i, .copyright {
+  color: white;
+}
+
+.copyright {
+  text-align: center;
 }
 
 .game-board {
