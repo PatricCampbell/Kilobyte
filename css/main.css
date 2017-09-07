@@ -1,13 +1,33 @@
-.tile {
-  height: 50px;
-  width: 50px;
-  background: whitesmoke;
-  border: 1px solid black;
+body {
+  font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+  background: black;
+}
+
+.game-board {
+  width: 500px;
+  margin: 0 auto;
 }
 
 .row {
-  width: 200px;
+  width: 500px;
+  margin-bottom: 10px;
   display: flex;
+}
+
+.tile {
+  height: 115px;
+  width: 115px;
+  margin-right: 10px;
+  background: rgb(119, 110, 101);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.tile p {
+  font-size: 3.5rem;
+  color: #776E65;
 }
 
 [data-value='1'] {
@@ -19,7 +39,7 @@
 }
 
 [data-value='4'] {
-  background-color: #EE8B22;
+  background-color: #EFB964;
 }
 
 [data-value='8'] {

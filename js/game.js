@@ -28,7 +28,7 @@ class Game {
           const tile = document
             .querySelector(`[data-position="${xVal},${yVal}"]`);
           const value = this.board.grid[xVal][yVal].value;
-          tile.innerHTML = value;
+          tile.innerHTML = `<p>${value}</p>`;
           tile.setAttribute('data-value', value);
         } else {
           const tile = document
