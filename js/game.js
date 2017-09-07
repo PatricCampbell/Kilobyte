@@ -179,6 +179,33 @@ class Board {
   clearSpace(xPos, yPos) {
     this.grid[xPos][yPos] = undefined;
   }
+
+  gameOver() {
+    if (this.isGameLost()) {
+      return false;
+    } else if (this.isGameWon()) {
+      return true;
+    } else {
+      return null;
+    }
+  }
+
+  isGameLost() {
+
+  }
+
+  isGameWon() {
+    let won = false;
+
+    this.grid.forEach((row, yPos) => {
+      row.forEach((column, xPos) => {
+        if (this.grid[xPos][yPos].value === 1024) {
+          won = true;
+        }
+      });
+    });
+    return won;
+  }
 }
 
 class Tile { 
