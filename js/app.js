@@ -65,9 +65,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const Board = __webpack_require__(1);
+/***/ (function(module, exports) {
 
 class Game {
   constructor() {
@@ -112,15 +110,6 @@ class Game {
   }
 }
 
-const g = new Game();
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const Tile = __webpack_require__(2);
-
 class Board {
   constructor() {
     this.grid = [];
@@ -155,14 +144,47 @@ class Board {
       this.grid[xPos][yPos] = new Tile(value);
     }
   }
+
+  moveRight() {
+    // debugger
+    const startRow = 0;
+    const startColumn = 3;
+
+    for (let rowIdx = startRow; rowIdx < 4; rowIdx++) {
+      for (let colIdx = startColumn; colIdx < 0; colIdx--) {
+        this.moveTile(rowIdx, colIdx, 1, 0);
+      }
+    }
+  }
+
+  moveTile(rowIdx, colIdx, xVector, yVector) {
+    debugger
+    let newX = colIdx + xVector;
+    let newY = rowIdx + yVector;
+    let value = this.grid[colIdx, rowIdx].value;
+
+    if (newX < 0 || newX > 3 || newY < 0 || newY > 3) {
+      return null;
+    } else if (this.grid[newX][newY]) {
+      if (value === this.grid[newX][newY].value) {
+        clearSpace(colIdx, rowIdx);
+        clearSpace(newX, newY);
+        addTile(newX, newY, value * 2);
+        return null;
+      } else {
+        return null;
+      }
+    } else {
+      clearSpace(colIdx, rowIdx);
+      addTile(newX, newY, value);
+      moveTile(newY, newX, xVector, yVector);
+    }
+  }
+
+  clearSpace(xPos, yPos) {
+    this.grid[xPos][yPos] = undefined;
+  }
 }
-
-module.exports = Board;
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
 
 class Tile { 
   constructor(value = this.randomStartValue()) {
@@ -178,7 +200,7 @@ class Tile {
   }
 }
 
-module.exports = Tile;
+const g = new Game();
 
 /***/ })
 /******/ ]);

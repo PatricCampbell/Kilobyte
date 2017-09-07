@@ -1,5 +1,3 @@
-const Board = require('./board.js');
-
 class Game {
   constructor() {
     this.board = new Board();
@@ -16,22 +14,27 @@ class Game {
     });
     
     const rows = document.querySelectorAll('.row');
-    Array.prototype.forEach.call(rows, (row, xVal) => {
-      for (let yVal = 0; yVal < 4; yVal++) {
+    Array.prototype.forEach.call(rows, (row, yVal) => {
+      for (let xVal = 0; xVal < 4; xVal++) {
         row.innerHTML += `<div class="tile" data-position="${[xVal, yVal]}"></div>`
       }
     });
   }
 
   render() {
-    this.board.grid.forEach((row, xVal) => {
-      this.board.grid.forEach((column, yVal) => {
+    this.board.grid.forEach((row, yVal) => {
+      this.board.grid.forEach((column, xVal) => {
         if (this.board.grid[xVal][yVal]) {
           const tile = document
             .querySelector(`[data-position="${xVal},${yVal}"]`);
-          const value = this.board.grid[xVal][yVal].value
+          const value = this.board.grid[xVal][yVal].value;
           tile.innerHTML = value;
           tile.setAttribute('data-value', value);
+        } else {
+          const tile = document
+            .querySelector(`[data-position="${xVal},${yVal}"]`);
+          tile.innerHTML = '';
+          tile.setAttribute('data-value', '');
         }
       });
     });
@@ -43,4 +46,133 @@ class Game {
   }
 }
 
+class Board {
+  constructor() {
+    this.grid = [];
+
+    this.initialTiles();
+  }
+
+  initialTiles() {
+    for (let columns = 0; columns < 4; columns++) {
+      this.grid.push(new Array(4));
+    }
+
+    this.addRandomTile();
+    this.addRandomTile();    
+  }
+
+  addRandomTile() {
+    const xPos = this.randomPos();
+    const yPos = this.randomPos();
+
+    this.addTile(xPos, yPos);
+  }
+  
+  randomPos() {
+    return Math.floor(Math.random() * 4);
+  }
+
+  addTile(xPos, yPos, value = undefined) {
+    if (this.grid[xPos][yPos]) {
+      this.addRandomTile();
+    } else {
+      this.grid[xPos][yPos] = new Tile(value);
+    }
+  }
+
+  moveRight() {
+    const startRow = 0;
+    const startColumn = 3;
+    for (let yPos = startRow; yPos < 4; yPos++) {
+      for (let xPos = startColumn; xPos > -1; xPos--) {
+        if (this.grid[xPos][yPos]) {
+          this.moveTile(xPos, yPos, 1, 0);
+        }
+      }
+    }
+  }
+
+  moveLeft() {
+    const startRow = 0;
+    const startColumn = 0;
+    for (let yPos = startRow; yPos < 4; yPos++) {
+      for (let xPos = startColumn; xPos < 4; xPos++) {
+        if (this.grid[xPos][yPos]) {
+          this.moveTile(xPos, yPos, -1, 0);
+        }
+      }
+    }
+  }
+
+  moveUp() {
+    const startRow = 0;
+    const startColumn = 0;
+    for (let yPos = startRow; yPos < 4; yPos++) {
+      for (let xPos = startColumn; xPos < 4; xPos++) {
+        if (this.grid[xPos][yPos]) {
+          this.moveTile(xPos, yPos, 0, -1);
+        }
+      }
+    }
+  }
+
+  moveDown() {
+    const startRow = 3;
+    const startColumn = 0;
+    for (let yPos = startRow; yPos > -1; yPos--) {
+      for (let xPos = startColumn; xPos < 4; xPos++) {
+        if (this.grid[xPos][yPos]) {
+          this.moveTile(xPos, yPos, 0, 1);
+        }
+      }
+    }
+  }
+
+  moveTile(xPos, yPos, xVector, yVector) {
+    let newX = xPos + xVector;
+    let newY = yPos + yVector;
+    let value = this.grid[xPos][yPos].value;
+
+    if (newX > 3 || newY > 3 || newX < 0 ||newY < 0) {
+      return null;
+    } else if (this.grid[newX][newY]) {
+      if (value === this.grid[newX][newY].value) {
+        this.clearSpace(xPos, yPos);
+        this.clearSpace(newX, newY);
+        this.addTile(newX, newY, value * 2);
+        return null;
+      } else {
+        return null;
+      }
+    } else {
+      this.clearSpace(xPos, yPos);
+      this.addTile(newX, newY, value);
+      this.moveTile(newX, newY, xVector, yVector);
+    }
+  }
+
+  clearSpace(xPos, yPos) {
+    this.grid[xPos][yPos] = undefined;
+  }
+}
+
+class Tile { 
+  constructor(value = this.randomStartValue()) {
+    this.value = value;
+  }
+
+  randomStartValue() {
+    if (Math.floor(Math.random() * 10) < 8) {
+      return 1;
+    } else {
+      return 2;
+    }  
+  }
+}
+
+document.addEventListener('keydown', event => {
+  g.playTurn();
+  console.log(event.keyCode);
+});
 const g = new Game();
