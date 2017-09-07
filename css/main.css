@@ -4,25 +4,25 @@ body {
 }
 
 .game-board {
-  width: 500px;
+  width: 31.25rem;
   margin: 0 auto;
 }
 
 .row {
-  width: 500px;
-  margin-bottom: 10px;
+  width: 31.25rem;
+  margin-bottom: .9375rem;
   display: flex;
 }
 
 .tile {
-  height: 115px;
-  width: 115px;
-  margin-right: 10px;
+  height: 6.875rem;
+  width: 6.875rem;
+  margin-right: .9375rem;
   background: rgb(119, 110, 101);
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 5px;
+  border-radius: .3125rem;
 }
 
 .tile p {
