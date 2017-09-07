@@ -40,7 +40,21 @@ class Game {
     });
   }
 
-  playTurn() {
+  playTurn(keyCode) {
+    switch (keyCode) {
+      case 39:
+        this.board.moveRight();
+        break;
+      case 37:
+        this.board.moveLeft();
+        break;
+      case 38:
+        this.board.moveUp();
+        break;
+      case 40:
+        this.board.moveDown();
+        break;
+    }
     this.board.addRandomTile();
     this.render();
   }
@@ -171,8 +185,9 @@ class Tile {
   }
 }
 
-document.addEventListener('keydown', event => {
-  g.playTurn();
-  console.log(event.keyCode);
-});
 const g = new Game();
+document.addEventListener('keydown', event => {
+  if ([37, 38, 39, 40].includes(event.keyCode)) {
+    g.playTurn(event.keyCode);
+  }
+});

@@ -30,6 +30,28 @@
   background-color: #F26A21;
 }
 
+[data-value='32'] {
+  background-color: #F67C5F;
+}
+
 [data-value='64'] {
   background-color: #F65E3B;
 }
+
+[data-value='128'] {
+  background-color: #EDCF72;
+}
+
+/* Make this sparkly */
+[data-value='256'] {
+  background-color: #EDCC61;
+}
+
+/* More sparkles */
+[data-value='512'] {
+  background-color: #EDC850;
+}
+
+/* [data-value='1024'] {
+  background-color: #;
+} */
