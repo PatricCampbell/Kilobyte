@@ -11,6 +11,10 @@ header {
   font-size: 1.75rem;
 }
 
+p {
+  margin: 0;
+}
+
 a:link {
   color: white;
 }
@@ -42,7 +46,8 @@ a:hover * {
   text-align: center;
   color: white;
   font-size: 1.1rem;
-  font-weight: bolder; 
+  font-weight: bolder;
+  padding: .4rem 0;
 }
 
 .best-score {
@@ -50,6 +55,10 @@ a:hover * {
   height: 4.5rem;
   background: #BBADA0;
   border-radius: .3125rem;
+}
+
+.current-score .current-score-value, .best-score .best-score-value {
+  font-size: 1.3rem;
 }
 
 .links {
@@ -71,6 +80,7 @@ a:hover * {
 
 .links a span i {
   margin-right: .6rem;
+  text-decoration: none;
 }
 
 .links a span p, .links a span i, .copyright {

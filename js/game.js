@@ -41,6 +41,12 @@ class Game {
     });
   }
 
+  updateScore(score) {
+    const scoreP = document.querySelector('.current-score-value');
+
+    scoreP.innerHTML = score;
+  }
+
   playTurn(keyCode) {
     switch (keyCode) {
       case 39:
@@ -58,6 +64,7 @@ class Game {
     }
     this.board.addRandomTile();
     this.render();
+    this.updateScore(this.board.score);
   }
 }
 
