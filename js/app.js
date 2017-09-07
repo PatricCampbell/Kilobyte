@@ -65,7 +65,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+const Board = __webpack_require__(1);
 
 class Game {
   constructor() {
@@ -110,6 +112,15 @@ class Game {
   }
 }
 
+const g = new Game();
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const Tile = __webpack_require__(2);
+
 class Board {
   constructor() {
     this.grid = [];
@@ -146,6 +157,13 @@ class Board {
   }
 }
 
+module.exports = Board;
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
 class Tile { 
   constructor(value = this.randomStartValue()) {
     this.value = value;
@@ -160,7 +178,7 @@ class Tile {
   }
 }
 
-const g = new Game();
+module.exports = Tile;
 
 /***/ })
 /******/ ]);

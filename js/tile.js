@@ -1,5 +1,5 @@
 class Tile { 
-  constructor(value = randomStartValue()) {
+  constructor(value = this.randomStartValue()) {
     this.value = value;
   }
 
@@ -12,4 +12,4 @@ class Tile {
   }
 }
 
-export default Tile;
+module.exports = Tile;
