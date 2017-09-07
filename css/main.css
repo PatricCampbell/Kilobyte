@@ -23,6 +23,35 @@ a:hover * {
   color: #F5DEBC;
 }
 
+.scores {
+  margin: 1rem auto;
+  width: 31.25rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.current-score {
+  width: 6.875rem;
+  height: 4.5rem;
+  background: #BBADA0;
+  border-radius: .3125rem;
+  margin-right: .6rem;
+}
+
+.current-score p, .best-score p {
+  text-align: center;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bolder; 
+}
+
+.best-score {
+  width: 9rem;
+  height: 4.5rem;
+  background: #BBADA0;
+  border-radius: .3125rem;
+}
+
 .links {
   margin: 0 auto;
   width: 31.25rem;
@@ -66,12 +95,16 @@ a:hover * {
 .tile {
   height: 6.875rem;
   width: 6.875rem;
-  margin-right: .9375rem;
+  margin-right: 1.25rem;
   background: rgb(119, 110, 101);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: .3125rem;
+}
+
+.tile:nth-of-type(4n) {
+  margin-right: 0;
 }
 
 .tile p {

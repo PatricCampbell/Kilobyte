@@ -1,6 +1,7 @@
 class Game {
   constructor() {
     this.board = new Board();
+    this.highScore = 0;
 
     this.initialRender();
     this.render();
@@ -63,7 +64,8 @@ class Game {
 class Board {
   constructor() {
     this.grid = [];
-
+    this.score = 0;
+  
     this.initialTiles();
   }
 
@@ -155,6 +157,7 @@ class Board {
         this.clearSpace(xPos, yPos);
         this.clearSpace(newX, newY);
         this.addTile(newX, newY, value * 2);
+        this.score += value * 2;
         return null;
       } else {
         return null;
