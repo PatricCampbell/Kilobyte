@@ -180,7 +180,7 @@ class Board {
     this.grid[xPos][yPos] = undefined;
   }
 
-  gameOver() {
+  checkGameOver() {
     if (this.isGameLost()) {
       return false;
     } else if (this.isGameWon()) {
@@ -197,13 +197,14 @@ class Board {
   isGameWon() {
     let won = false;
 
-    this.grid.forEach((row, yPos) => {
-      row.forEach((column, xPos) => {
-        if (this.grid[xPos][yPos].value === 1024) {
+    this.grid.forEach(row => {
+      row.forEach(tile => {
+        if (tile !== undefined && tile.value === 1024) {
           won = true;
         }
       });
     });
+
     return won;
   }
 }
