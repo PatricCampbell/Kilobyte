@@ -125,8 +125,8 @@ class Board {
           this.moveTile(xPos, yPos, -1, 0);
         }
       }
-    this.addRandomTile();    
     }
+    this.addRandomTile();    
   }
 
   moveUp() {
