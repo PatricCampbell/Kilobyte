@@ -62,7 +62,6 @@ class Game {
         this.board.moveDown();
         break;
     }
-    this.board.addRandomTile();
     this.render();
     this.updateScore(this.board.score);
   }
@@ -114,6 +113,7 @@ class Board {
         }
       }
     }
+    this.addRandomTile();        
   }
 
   moveLeft() {
@@ -125,6 +125,7 @@ class Board {
           this.moveTile(xPos, yPos, -1, 0);
         }
       }
+    this.addRandomTile();    
     }
   }
 
@@ -138,6 +139,7 @@ class Board {
         }
       }
     }
+    this.addRandomTile();        
   }
 
   moveDown() {
@@ -150,6 +152,7 @@ class Board {
         }
       }
     }
+    this.addRandomTile();        
   }
 
   moveTile(xPos, yPos, deltaX, deltaY) {
@@ -191,7 +194,21 @@ class Board {
   }
 
   isGameLost() {
+    let lost = true;
 
+    if (this.isGridFull()) {
+      this.grid.forEach((row, yPos) => {
+        row.forEach((tile, xPos) => {
+          if (this.checkAdjacentTiles(xPos, yPos)) {
+            lost = false;
+          }
+        });
+      });
+    } else {
+      lost = false;
+    }
+
+    return lost;
   }
 
   isGameWon() {
@@ -207,6 +224,36 @@ class Board {
 
     return won;
   }
+
+  isGridFull() {
+    let full = true;
+
+    const flattenedGrid = this.grid.reduce((flat, row) => flat.concat(row));
+    for (let idx = 0; idx < flattenedGrid.length; idx++) {
+      if (flattenedGrid[idx] === undefined) {
+        full = false;
+      }
+    }
+
+    return full;
+  }
+
+  checkAdjacentTiles(xPos, yPos) {
+    const hasAdjacent = false;
+    const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+
+    directions.forEach(direction => {
+      const newX = xPos + direction[0];
+      const newY = yPos + direction[1];
+
+      if (newX > 0 && newY > 0 && newX < 4 && newY < 4 && this.grid[newX][newY] !== undefined && this.grid[newX][newY].value === this.grid[xPos][yPos].value) {
+        hasAdjacent = true;
+      }
+    });
+
+    return hasAdjacent;
+  }
+
 }
 
 class Tile { 
