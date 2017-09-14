@@ -124,6 +124,7 @@ class Game {
 
   reset() {
     const lostModal = document.querySelector('.lost-modal');
+    const wonModal = document.querySelector('.won-modal');
 
     if (this.board.score > this.highScore) {
       this.highScore = this.board.score;
@@ -131,9 +132,9 @@ class Game {
     }
 
     lostModal.classList.add('hidden');
+    wonModal.classList.add('won');
     this.board = new __WEBPACK_IMPORTED_MODULE_0__board__["a" /* default */]();
     this.updateScore(0);
-    this.addKeyboardEvents();
     this.render();
   }
 
@@ -178,7 +179,13 @@ class Game {
         this.reset();
       });
     } else if (board.isGameWon()) {
-      // open won model
+      const wonModal = document.querySelector('.won-modal');
+      const wonBtn = document.querySelector('.game-over-btn');
+
+      wonModal.classList.remove('hidden');
+      wonBtn.addEventListener('click', e => {
+        this.reset();
+      });
 
     } else {
       return null;
