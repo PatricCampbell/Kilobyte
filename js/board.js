@@ -172,7 +172,7 @@ class Board {
   }
 
   checkAdjacentTiles(xPos, yPos) {
-    const hasAdjacent = false;
+    let hasAdjacent = false;
     const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
 
     directions.forEach(direction => {

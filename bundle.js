@@ -116,17 +116,21 @@ class Game {
   addKeyboardEvents() {
     document.addEventListener('keydown', event => {
       if ([37, 38, 39, 40].includes(event.keyCode)) {
+        event.preventDefault();
         this.playTurn(event.keyCode);
       }
     });
   }
 
   reset() {
+    const lostModal = document.querySelector('.lost-modal');
+
     if (this.board.score > this.highScore) {
       this.highScore = this.board.score;
       this.updateHighScore(this.highScore);
     }
 
+    lostModal.classList.add('hidden');
     this.board = new __WEBPACK_IMPORTED_MODULE_0__board__["a" /* default */]();
     this.updateScore(0);
     this.addKeyboardEvents();
@@ -164,7 +168,25 @@ class Game {
     highScoreP.innerHTML = score;
   }
 
+  checkGameOver(board) {
+    if (board.isGameLost()) {
+      const lostModal = document.querySelector('.lost-modal');
+      const lostBtn = document.querySelector('.game-over-btn');
+
+      lostModal.classList.remove('hidden');
+      lostBtn.addEventListener('click', e => {
+        this.reset();
+      });
+    } else if (board.isGameWon()) {
+      // open won model
+
+    } else {
+      return null;
+    }
+  }
+
   playTurn(keyCode) {
+    this.checkGameOver(this.board);
     switch (keyCode) {
       case 39:
         this.board.moveRight();
@@ -367,7 +389,7 @@ class Board {
   }
 
   checkAdjacentTiles(xPos, yPos) {
-    const hasAdjacent = false;
+    let hasAdjacent = false;
     const directions = [[-1, 0], [1, 0], [0, -1], [0, 1]];
 
     directions.forEach(direction => {

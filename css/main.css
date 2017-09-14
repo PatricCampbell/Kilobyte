@@ -112,7 +112,39 @@ a:hover * {
 
 .game-board {
   width: 31.25rem;
+  height: 31.25rem;
   margin: 0 auto;
+  position: realtive;
+}
+
+.lost-modal, .won-modal {
+  position: absolute;
+  height: 31.25rem;
+  width: 31.25rem;
+  background: rgba(238, 228, 218, 0.5);
+  z-index: 5;
+  color: #f26a21;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.lost-modal p, .won-modal p {
+  margin-top: 8rem;
+  margin-bottom: 4rem;
+}
+
+.game-over-btn {
+  color: white;
+  background: #f26a21;
+  height: 40px;
+  width: 120px;
+  border-radius: 3px;
+  padding: 0 20px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
 }
 
 .how-to-play {
@@ -145,6 +177,10 @@ a:hover * {
 .tile p {
   font-size: 3.5rem;
   color: #776E65;
+}
+
+.hidden {
+  display: none;
 }
 
 [data-value='1'] {
@@ -189,6 +225,6 @@ a:hover * {
   background-color: #EDC850;
 }
 
-/* [data-value='1024'] {
-  background-color: #;
-} */
+ [data-value='1024'] {
+  background-color: red;
+}
