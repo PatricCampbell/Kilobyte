@@ -105,7 +105,6 @@ class Game {
   }
 
   playTurn(keyCode) {
-    this.checkGameOver(this.board);
     switch (keyCode) {
       case 39:
         this.board.moveRight();
@@ -120,6 +119,7 @@ class Game {
         this.board.moveDown();
         break;
     }
+    this.checkGameOver(this.board);
     this.render();
     this.updateScore(this.board.score);
   }
