@@ -1,4 +1,4 @@
-class Tile { 
+class Tile {
   constructor(value = this.randomStartValue()) {
     this.value = value;
   }
@@ -8,6 +8,8 @@ class Tile {
       return 1;
     } else {
       return 2;
-    }  
+    }
   }
 }
+
+export default Tile;
