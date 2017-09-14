@@ -6,6 +6,7 @@ class Game {
     this.highScore = 0;
 
     this.initialRender();
+    this.addKeyboardEvents();
     this.render();
   }
 
@@ -22,12 +23,26 @@ class Game {
         row.innerHTML += `<div class="tile" data-position="${[xVal, yVal]}"></div>`
       }
     });
+  }
 
+  addKeyboardEvents() {
     document.addEventListener('keydown', event => {
       if ([37, 38, 39, 40].includes(event.keyCode)) {
-        g.playTurn(event.keyCode);
+        this.playTurn(event.keyCode);
       }
     });
+  }
+
+  reset() {
+    if (this.board.score > this.highScore) {
+      this.highScore = this.board.score;
+      this.updateHighScore(this.highScore);
+    }
+
+    this.board = new Board();
+    this.updateScore(0);
+    this.addKeyboardEvents();
+    this.render();
   }
 
   render() {
@@ -53,6 +68,12 @@ class Game {
     const scoreP = document.querySelector('.current-score-value');
 
     scoreP.innerHTML = score;
+  }
+
+  updateHighScore(score) {
+    const highScoreP = document.querySelector('.best-score-value');
+
+    highScoreP.innerHTML = score;
   }
 
   playTurn(keyCode) {

@@ -34,7 +34,7 @@ a:hover * {
   justify-content: flex-end;
 }
 
-.current-score {
+.current-score, .reset-btn {
   width: 6.875rem;
   height: 4.5rem;
   background: #BBADA0;
@@ -57,7 +57,18 @@ a:hover * {
   border-radius: .3125rem;
 }
 
-.current-score .current-score-value, .best-score .best-score-value {
+.reset-btn {
+  text-align: center;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bolder;
+  padding: .4rem 0;
+  cursor: pointer;
+  border: none;
+  margin-right: auto;
+}
+
+.current-score .current-score-value, .best-score .best-score-value, .reset-btn {
   font-size: 1.3rem;
 }
 
