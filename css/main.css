@@ -68,6 +68,10 @@ a:hover * {
   margin-right: auto;
 }
 
+.reset-btn i {
+  font-size: 2rem;
+}
+
 .current-score .current-score-value, .best-score .best-score-value, .reset-btn {
   font-size: 1.3rem;
 }
@@ -109,6 +113,12 @@ a:hover * {
 .game-board {
   width: 31.25rem;
   margin: 0 auto;
+}
+
+.how-to-play {
+  width: 31.25rem;
+  margin: 0 auto;
+  color: white;
 }
 
 .row {
