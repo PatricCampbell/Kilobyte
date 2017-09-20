@@ -6,5 +6,5 @@ Kilobyte is a browser game inspired by 1024. The object of Kilobyte is to create
 
 # Future Features
 
-### A nice musical track to relax the user while playing,
-### High scores saved on the backend using FireBase so that users can compete against each other.
+#### A nice musical track to relax the user while playing,
+#### High scores saved on the backend using FireBase so that users can compete against each other.
